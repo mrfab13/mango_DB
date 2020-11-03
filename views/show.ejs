@@ -2,14 +2,13 @@
 
 <h1> <%=pics.title%> </h1>
 
-
-
-<img src= <%=pics.URL%> > </img> 
-
-<a> <%=pics.description%> </a>
+<img src= <%=pics.URL%> /> 
+<br>
+<h4> <%=pics.description%> </h4>
+<br>
+<h3> <%=pics.descriptionLong%> </h3>
 <% if(isOwner){ %>
 
-ownerownerownerownerownerownerownerownerownerownerownerownerownerowner
 
 <a class="btn btn-xs btn-warning" href="/pics/<%=pics._id%>/edit">
 	Edit

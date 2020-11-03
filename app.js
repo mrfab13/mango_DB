@@ -71,6 +71,7 @@ app.post("/pics", function(req, res)
 	var title = req.body.title;
 	var url = req.body.URL;
 	var Descrip = req.body.description;
+	var DescripLong = req.body.descriptionLong;
 	
 	var author = {
 		id: req.user._id,
@@ -221,6 +222,8 @@ var picsSchema = mongoose.Schema({
 title: String,
 URL: String,
 description: String,
+descriptionLong: String,
+
 author:{
 	id:{
 		type: mongoose.Schema.Types.ObjectId,

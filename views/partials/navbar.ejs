@@ -1,15 +1,18 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<ul class= "nav navbar-nav navbar-right">
+<nav class="navbar navbar-dark bg-dark justify-content-between sticky-top">
+	<h1>
+	<div>
+		<img src="https://em.wattpad.com/78dfa10e27595fdd7f6f7ab38599e9a57dc3eced/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f736679576348645f4c72383361673d3d2d3433363033393632382e313463656536663162303836366332383134383735303132373932312e676966?s=fit&w=720&h=720" width="160" height="90" alt="">
+		THE HUB
+	</div>
+	</h1>
+	<div>
 		<% if (!currentUser){ %>
-		<li><a href="/login">login</a></li>
-		<li><a href="/register">sign up</a></li>
+		<a class="btn btn-primary" href="/login">login</a>
+		<a class="btn btn-primary" href="/register">sign up</a>
 		<%  } else { %>
-		<li><a href="#">signed in as <%= currentUser.username %> </a></li>
-		<li><a href="/logout">log out</a></li>
+		<a class="btn btn-primary" href="#">signed in as <%= currentUser.username %> </a>
+		<a class="btn btn-primary" href="/logout">log out</a>
 		<%}%>
-	</ul>
+	</div>
+</nav>
 											   
-</head>
-</html>
