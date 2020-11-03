@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<ul class= "nav navbar-nav navbar-right">
+		<% if (!currentUser){ %>
+		<li><a href="/login">login</a></li>
+		<li><a href="/register">sign up</a></li>
+		<%  } else { %>
+		<li><a href="#">signed in as <%= currentUser.username %> </a></li>
+		<li><a href="/logout">log out</a></li>
+		<%}%>
+	</ul>
+											   
+</head>
+</html>

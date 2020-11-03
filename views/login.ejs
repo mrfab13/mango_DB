@@ -1,0 +1,18 @@
+
+<%- include("partials/header.ejs")%>
+
+
+
+<h1>log in time weee</h1>
+
+<form action="/login" method= "POST">
+<input type="text" name="username" placeholder="username">
+<input type="password" name="password" placeholder="password">
+<button>login</button>
+</form>
+
+<Li><a href="/register">Sign Up</a></Li>
+<Li><a href="/login">login</a></Li>
+<Li><a href="/logout">logout</a></Li>
+
+<%- include("partials/footer.ejs")%>

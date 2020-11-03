@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs")%>
+
+<h1> <%=pics.title%> </h1>
+
+
+
+<img src= <%=pics.URL%> > </img> 
+
+<a> <%=pics.description%> </a>
+<% if(isOwner){ %>
+
+ownerownerownerownerownerownerownerownerownerownerownerownerownerowner
+
+<a class="btn btn-xs btn-warning" href="/pics/<%=pics._id%>/edit">
+	Edit
+</a>
+	  
+	
+<div class="pull-right">
+	<form id= "delete-form" action= "/pics/<%=pics._id%>?_method=DELETE" method="POST">
+		<button class = "btn btn-xs btn-danger">
+				Delete
+		</button>
+	</form>	
+</div>
+
+<%}%>
+
+<%- include("partials/footer.ejs")%>
