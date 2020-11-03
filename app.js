@@ -79,7 +79,7 @@ app.post("/pics", function(req, res)
 	}
 	
 	
-	createNewObj(title, url, Descrip, author);
+	createNewObj(title, url, Descrip, DescripLong, author);
 	res.redirect("/pics");
 	
 });
@@ -247,13 +247,14 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-function createNewObj(_title, _URL, _descrip, _author)
+function createNewObj(_title, _URL, _descrip, _DescripLong,  _author)
 {
 	var obj = new pics({
 		
 		title: _title,
 		URL: _URL,
 		description: _descrip,
+		descriptionLong: _DescripLong,
 		author: _author
 		
 	});
