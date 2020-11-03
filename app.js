@@ -34,7 +34,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://localhost/pics_db");
+mongoose.connect("mongodb+srv://mrfab13:bruhMoment@monogdbcluster.if1u7.mongodb.net/webdev-mrfab13?retryWrites=true&w=majority");
 
 
 
@@ -43,7 +43,7 @@ app.get("/", function(req, res)
 	res.render("landing.ejs");		
 })
 
-app.listen(process.env.port || "3000", process.env.ip, function()
+app.listen(process.env.PORT || "3000", process.env.IP, function()
 {
 	console.log("listening");	
 	
