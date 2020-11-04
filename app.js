@@ -40,7 +40,8 @@ mongoose.connect("mongodb+srv://mrfab13:bruhMoment@monogdbcluster.if1u7.mongodb.
 
 app.get("/", function(req, res)
 {
-	res.render("landing.ejs");		
+	var user = req.user;
+	res.render("landing.ejs", {currentUser:user});		
 })
 
 app.listen(process.env.PORT || "3000", process.env.IP, function()
@@ -52,6 +53,7 @@ app.listen(process.env.PORT || "3000", process.env.IP, function()
 app.get("/pics", isLoggedIn , function(req, res)
 {
 	var user = req.user;
+	
 	pics.find({}, function(err, data){
 		if (err)
 		{
@@ -59,7 +61,7 @@ app.get("/pics", isLoggedIn , function(req, res)
 		}
 		else
 		{
-			res.render("index.ejs", {pics: data, currentUser: user});
+			res.render("index.ejs", {pics: data, currentUser:user});
 		}
 	});
 	
@@ -86,6 +88,9 @@ app.post("/pics", function(req, res)
 
 app.get("/pics/:id", function(req, res)
 {
+
+	var user = req.user;
+	
 	pics.findById(req.params.id, function(err, data)
 	{
 		if (err == true)
@@ -94,21 +99,18 @@ app.get("/pics/:id", function(req, res)
 		}
 		else
 		{
-			console.log(data.author.id.equals(req.user._id))
-			console.log(req.isAuthenticated())
 			
-			if (req.isAuthenticated() && (data.author.id.equals(req.user._id)))
+			if (req.isAuthenticated() && (data.author.id.equals(req.user._id) || req.user.username == "admin"))
 			{
 				console.log("true")
-				res.render("show.ejs", {pics:data, isOwner:true });
+				res.render("show.ejs", {pics:data, isOwner:true, currentUser:user});
 				
 
 			}
 			else
 			{
 				console.log("false")
-				res.render("show.ejs", {pics:data, isOwner:false });
-
+				res.render("show.ejs", {pics:data, isOwner:false, currentUser:user});
 			}
 		}
 	});
@@ -117,6 +119,9 @@ app.get("/pics/:id", function(req, res)
 
 app.get("/pics/:id/edit", checkOwnership, function(req, res){
 	
+
+	var user = req.user;
+
 	pics.findById(req.params.id, function(err, data)
 	{
 		if (err == true)
@@ -126,14 +131,14 @@ app.get("/pics/:id/edit", checkOwnership, function(req, res){
 		else
 		{
 			
-			res.render("edit.ejs", {pics:data});
+			res.render("edit.ejs", {pics:data, currentUser:user});
 		}
 	});
 
 });
 
 app.put("/pics/:id", checkOwnership, function(req, res){
-	
+
 	pics.findByIdAndUpdate(req.params.id, req.body.pics, function(err, updatedInfo){
 		
 		if (err)
@@ -295,7 +300,7 @@ function checkOwnership(req, res, next)
 			}
 			else
 			{
-				if (pics.author.id.equals(req.user.id)){
+				if (pics.author.id.equals(req.user.id) || req.user.username == "admin"){
 					next();
 				}
 				else

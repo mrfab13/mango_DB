@@ -1,28 +1,43 @@
 <%- include("partials/header.ejs")%>
+<%- include("partials/navbar.ejs")%>
+<style>
+body {
+	background-image: url('https://static.wallhaven.cc/images/layout/bg-dark-grain.png');
+	background-repeat: repeat;
+  	background-attachment: fixed;
+	
+}
+</style>
 
+
+<img src='<%=pics.URL%>' style="width:auto%; height:auto%; max-width:1920px; max-height:980px;" >
+<br>
 <h1> <%=pics.title%> </h1>
 
-<img src= <%=pics.URL%> /> 
-<br>
 <h4> <%=pics.description%> </h4>
 <br>
-<h3> <%=pics.descriptionLong%> </h3>
-<br>
+<%=pics.descriptionLong%>
+<br><br>
+
+	<a class="btn btn-lg btn-primary" href='<%=pics.URL%>'>
+		Orignal
+	</a>
+
+<%console.log(pics._URL)%>
+
 <% if(isOwner){ %>
 
 
-<a class="btn btn-xs btn-warning" href="/pics/<%=pics._id%>/edit">
+<a class="btn btn-lg btn-warning" href="/pics/<%=pics._id%>/edit">
 	Edit
 </a>
-	  
-	
-<div class="pull-right">
-	<form id= "delete-form" action= "/pics/<%=pics._id%>?_method=DELETE" method="POST">
-		<button class = "btn btn-xs btn-danger">
-				Delete
-		</button>
-	</form>	
-</div>
+
+
+<form id= "delete-form" action= "/pics/<%=pics._id%>?_method=DELETE" method="POST">
+	<button class = "btn btn-lg btn-danger">
+			Delete
+	</button>
+</form>	
 
 <%}%>
 

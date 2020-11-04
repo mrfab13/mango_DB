@@ -1,18 +1,44 @@
-
 <%- include("partials/header.ejs")%>
+<%- include("partials/navbar.ejs")%>
 
 
+<style>
+body {
+	background-image: url('https://cdna.artstation.com/p/assets/images/images/012/218/974/large/sebastian-kesiak-metalhellchinesejungleconceptfin12.jpg?1533662729');
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+ 	background-size: cover;
+	
+}
+</style>
 
-<h1>log in time weee</h1>
+<br>
 
-<form action="/login" method= "POST">
-<input type="text" name="username" placeholder="username">
-<input type="password" name="password" placeholder="password">
-<button>login</button>
+
+<div style="background-color:rgba(0,0,0,0.2); max-width:40vw; padding:20px 5px;  margin: 0 auto;">
+	
+<h1> &nbsp;&nbsp;Log In Time Weeeee</h1>
+<form action="/login" method="POST">
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" placeholder="username"  name="username">
+    </div>
+  </div>
+	
+	<div class="form-group">
+    	<div class="col-sm-12">
+     	 <input type="password" class="form-control" placeholder="password"  name="password">
+    	</div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </div>
 </form>
+</div>
 
-<Li><a href="/register">Sign Up</a></Li>
-<Li><a href="/login">login</a></Li>
-<Li><a href="/logout">logout</a></Li>
+
 
 <%- include("partials/footer.ejs")%>
